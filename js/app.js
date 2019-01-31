@@ -36,3 +36,23 @@ function shuffle(array) {
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
+
+//function to change the cards to match if they match 
+function checkMatchCard() {
+    var cardClicked = document.getElementByClassName("card");
+    if { //open card 1 and open card 2 match, then keep both cards on open side and change to li.card.match
+    } else {
+      //flip both cards back to close side
+    }
+  }
+  
+  // add event listener to table
+  var el = document.getElementsByClassName("card");
+  el.addEventListener("click", checkMatchCard, false);
+
+
+  //when clicked add open show classes to element
+  var d = document.getElementByClassName("card");
+  d.className += "open show";
+
+  var openCards = []; 
