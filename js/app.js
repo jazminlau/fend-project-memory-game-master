@@ -1,7 +1,49 @@
 /*
  * Create a list that holds all of your cards
  */
+const cards = document.querySelectorAll(".card");
 
+let hasFlippedCard = false;
+let firstCard, secondCard;
+
+function flipCard() {
+    this.classList.toggle('flip');
+
+    if(!hasFlippedCard) {
+        //first click
+        hasFlippedCard = true;
+        firstCard = this;
+
+        return;
+    }
+
+        // second click
+        hasFlippedCard = false;
+        secondCard = this;
+
+        checkForMatch();
+}
+
+function checkForMatch() {
+    let isMatch = firstCard.dataset.framework ===
+    secondCard.dataset.framework;
+    
+    isMatch ? disableCards() : unFlipCards(); 
+}
+
+function disableCards() {
+    firstCard.removeEventListener('click', flipCard);
+    secondCard.removeEventListener('click', flipCard);
+}
+
+function unFlipCards() {
+    setTimeout(() => {
+        firstCard.classList.remove('flip');
+        secondCard.classList.remove('flip');
+    }, 1500);
+}
+
+cards.forEach(card => card.addEventListener('click', flipCard));
 
 /*
  * Display the cards on the page
@@ -38,21 +80,23 @@ function shuffle(array) {
  */
 
 //function to change the cards to match if they match 
-function checkMatchCard() {
-    var cardClicked = document.getElementByClassName("card");
-    if { //open card 1 and open card 2 match, then keep both cards on open side and change to li.card.match
-    } else {
-      //flip both cards back to close side
-    }
-  }
+// function checkMatchCard() {
+//     var cardClicked = document.getElementByClassName("card");
+//     if { //open card 1 and open card 2 match, then keep both cards on open side and change to li.card.match
+//     } else {
+//       //flip both cards back to close side
+//     }
+//   }
   
-  // add event listener to table
-  var el = document.getElementsByClassName("card");
-  el.addEventListener("click", checkMatchCard, false);
+//   // add event listener to table
+//   var el = document.getElementsByClassName("card");
+//   el.addEventListener("click", checkMatchCard, false);
 
 
-  //when clicked add open show classes to element
-  var d = document.getElementByClassName("card");
-  d.className += "open show";
+//   //when clicked add open show classes to element
+//   var d = document.getElementByClassName("card");
+//   d.className += "open show";
 
-  var openCards = []; 
+//   var openCards = []; 
+
+//check flip animation !!!!
